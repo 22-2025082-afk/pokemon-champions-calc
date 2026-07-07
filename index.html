@@ -10,24 +10,28 @@
 
 <body>
 
-<header>
+<header class="header">
     <h1>Pokémon Champions ダメージ計算機</h1>
     <p>Version 1.0</p>
 </header>
 
 <main class="container">
 
+    <!-- ===================== -->
     <!-- 攻撃側 -->
+    <!-- ===================== -->
+
     <section class="card">
 
         <h2>攻撃側</h2>
 
         <div class="form-group">
-            <label>ポケモン</label>
-            <input id="attackerPokemon"
-                   list="pokemonList"
-                   autocomplete="off"
-                   placeholder="ポケモン名を入力">
+            <label for="attackerPokemon">ポケモン</label>
+            <input
+                id="attackerPokemon"
+                list="pokemonList"
+                autocomplete="off"
+                placeholder="ポケモン名">
         </div>
 
         <div class="form-row">
@@ -47,13 +51,18 @@
         <div class="form-row">
 
             <div class="form-group">
-                <label>攻撃種族値</label>
-                <input id="atkBase" type="number">
+                <label>HP</label>
+                <input id="attackerBaseHP" type="number">
             </div>
 
             <div class="form-group">
-                <label>特攻種族値</label>
-                <input id="spaBase" type="number">
+                <label>攻撃</label>
+                <input id="attackerBaseAtk" type="number">
+            </div>
+
+            <div class="form-group">
+                <label>防御</label>
+                <input id="attackerBaseDef" type="number">
             </div>
 
         </div>
@@ -61,13 +70,56 @@
         <div class="form-row">
 
             <div class="form-group">
-                <label>攻撃能力ポイント</label>
-                <input id="atkPoint" type="number" value="0">
+                <label>特攻</label>
+                <input id="attackerBaseSpa" type="number">
             </div>
 
             <div class="form-group">
+                <label>特防</label>
+                <input id="attackerBaseSpd" type="number">
+            </div>
+
+            <div class="form-group">
+                <label>素早さ</label>
+                <input id="attackerBaseSpe" type="number">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label>HP能力ポイント</label>
+                <input id="attackerHPPoint" type="number" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>攻撃能力ポイント</label>
+                <input id="attackerAtkPoint" type="number" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>防御能力ポイント</label>
+                <input id="attackerDefPoint" type="number" value="0">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
                 <label>特攻能力ポイント</label>
-                <input id="spaPoint" type="number" value="0">
+                <input id="attackerSpaPoint" type="number" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>特防能力ポイント</label>
+                <input id="attackerSpdPoint" type="number" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>素早さ能力ポイント</label>
+                <input id="attackerSpePoint" type="number" value="0">
             </div>
 
         </div>
@@ -77,19 +129,35 @@
             <select id="attackerNature"></select>
         </div>
 
+        <div class="stats-box">
+
+            <h3>実数値</h3>
+
+            <div id="attackerStats">
+                -
+            </div>
+
+        </div>
+
     </section>
 
+    <!-- 防御側はPart2 -->  
+    
+    <!-- ===================== -->
     <!-- 防御側 -->
+    <!-- ===================== -->
+
     <section class="card">
 
         <h2>防御側</h2>
 
         <div class="form-group">
-            <label>ポケモン</label>
-            <input id="defenderPokemon"
-                   list="pokemonList"
-                   autocomplete="off"
-                   placeholder="ポケモン名を入力">
+            <label for="defenderPokemon">ポケモン</label>
+            <input
+                id="defenderPokemon"
+                list="pokemonList"
+                autocomplete="off"
+                placeholder="ポケモン名">
         </div>
 
         <div class="form-row">
@@ -109,18 +177,37 @@
         <div class="form-row">
 
             <div class="form-group">
-                <label>HP種族値</label>
-                <input id="hpBase" type="number">
+                <label>HP</label>
+                <input id="defenderBaseHP" type="number">
             </div>
 
             <div class="form-group">
-                <label>防御種族値</label>
-                <input id="defBase" type="number">
+                <label>攻撃</label>
+                <input id="defenderBaseAtk" type="number">
             </div>
 
             <div class="form-group">
-                <label>特防種族値</label>
-                <input id="spdBase" type="number">
+                <label>防御</label>
+                <input id="defenderBaseDef" type="number">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label>特攻</label>
+                <input id="defenderBaseSpa" type="number">
+            </div>
+
+            <div class="form-group">
+                <label>特防</label>
+                <input id="defenderBaseSpd" type="number">
+            </div>
+
+            <div class="form-group">
+                <label>素早さ</label>
+                <input id="defenderBaseSpe" type="number">
             </div>
 
         </div>
@@ -129,17 +216,36 @@
 
             <div class="form-group">
                 <label>HP能力ポイント</label>
-                <input id="hpPoint" type="number" value="0">
+                <input id="defenderHPPoint" type="number" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>攻撃能力ポイント</label>
+                <input id="defenderAtkPoint" type="number" value="0">
             </div>
 
             <div class="form-group">
                 <label>防御能力ポイント</label>
-                <input id="defPoint" type="number" value="0">
+                <input id="defenderDefPoint" type="number" value="0">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label>特攻能力ポイント</label>
+                <input id="defenderSpaPoint" type="number" value="0">
             </div>
 
             <div class="form-group">
                 <label>特防能力ポイント</label>
-                <input id="spdPoint" type="number" value="0">
+                <input id="defenderSpdPoint" type="number" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>素早さ能力ポイント</label>
+                <input id="defenderSpePoint" type="number" value="0">
             </div>
 
         </div>
@@ -149,19 +255,36 @@
             <select id="defenderNature"></select>
         </div>
 
+        <div class="stats-box">
+
+            <h3>実数値</h3>
+
+            <div id="defenderStats">
+                -
+            </div>
+
+        </div>
+
     </section>
 
+    <!-- ===================== -->
     <!-- 技 -->
+    <!-- ===================== -->
+
     <section class="card">
 
         <h2>技</h2>
 
         <div class="form-group">
+
             <label>技名</label>
-            <input id="moveName"
-                   list="moveList"
-                   autocomplete="off"
-                   placeholder="技名を入力">
+
+            <input
+                id="moveName"
+                list="moveList"
+                autocomplete="off"
+                placeholder="技名">
+
         </div>
 
         <div class="form-row">
@@ -181,73 +304,115 @@
 
             <div class="form-group">
                 <label>威力</label>
-                <input id="movePower"
-                       type="number"
-                       value="90">
+                <input
+                    id="movePower"
+                    type="number"
+                    value="90">
             </div>
 
         </div>
 
     </section>
 
+    <!-- 補正はPart3 -->
+
+    <!-- ===================== -->
     <!-- 補正 -->
+    <!-- ===================== -->
+
     <section class="card">
 
         <h2>補正</h2>
 
-        <div class="checkboxes">
+        <div class="checkbox-grid">
 
             <label>
-                <input id="stab"
-                       type="checkbox"
-                       checked>
-                タイプ一致
+                <input id="stab" type="checkbox" checked>
+                タイプ一致(STAB)
             </label>
 
             <label>
-                <input id="critical"
-                       type="checkbox">
+                <input id="critical" type="checkbox">
                 急所
             </label>
 
             <label>
-                <input id="burn"
-                       type="checkbox">
+                <input id="burn" type="checkbox">
                 やけど
+            </label>
+
+            <label>
+                <input id="reflect" type="checkbox">
+                リフレクター
+            </label>
+
+            <label>
+                <input id="lightScreen" type="checkbox">
+                ひかりのかべ
             </label>
 
         </div>
 
-        <div class="form-group">
-            <label>天候</label>
+        <div class="form-row">
 
-            <select id="weather">
+            <div class="form-group">
 
-                <option value="none">なし</option>
+                <label>天候</label>
 
-                <option value="sun">
-                    晴れ
-                </option>
+                <select id="weather">
+                    <option value="none">なし</option>
+                    <option value="sun">晴れ</option>
+                    <option value="rain">雨</option>
+                    <option value="sand">すなあらし</option>
+                    <option value="snow">ゆき</option>
+                </select>
 
-                <option value="rain">
-                    雨
-                </option>
+            </div>
 
-            </select>
+            <div class="form-group">
+
+                <label>フィールド</label>
+
+                <select id="field">
+                    <option value="none">なし</option>
+                    <option value="electric">エレキフィールド</option>
+                    <option value="grassy">グラスフィールド</option>
+                    <option value="misty">ミストフィールド</option>
+                    <option value="psychic">サイコフィールド</option>
+                </select>
+
+            </div>
+
         </div>
 
     </section>
 
-    <button id="calculateButton">
-        ダメージ計算
-    </button>
+    <!-- ===================== -->
+    <!-- 結果 -->
+    <!-- ===================== -->
 
-    <section class="card result">
+    <section class="card result-card">
 
-        <h2>計算結果</h2>
+        <h2>ダメージ計算結果</h2>
 
-        <div id="result">
-            ダメージを計算してください。
+        <button id="calculateButton">
+            ダメージ計算
+        </button>
+
+        <div class="result-box">
+
+            <div id="damageResult">
+                -
+            </div>
+
+            <div id="damagePercent">
+                -
+            </div>
+
+            <div id="koChance">
+                -
+            </div>
+
         </div>
 
     </section>
