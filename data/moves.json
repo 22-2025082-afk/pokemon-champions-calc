@@ -12,14 +12,32 @@
         "power": 90
     },
     {
+        "name": "かえんほうしゃ",
+        "type": "ほのお",
+        "category": "special",
+        "power": 90
+    },
+    {
         "name": "れいとうビーム",
         "type": "こおり",
         "category": "special",
         "power": 90
     },
     {
-        "name": "かえんほうしゃ",
-        "type": "ほのお",
+        "name": "ハイドロポンプ",
+        "type": "みず",
+        "category": "special",
+        "power": 110
+    },
+    {
+        "name": "なみのり",
+        "type": "みず",
+        "category": "special",
+        "power": 90
+    },
+    {
+        "name": "エナジーボール",
+        "type": "くさ",
         "category": "special",
         "power": 90
     },
@@ -30,33 +48,45 @@
         "power": 80
     },
     {
-        "name": "インファイト",
-        "type": "かくとう",
-        "category": "physical",
-        "power": 120
-    },
-    {
-        "name": "ハイドロポンプ",
-        "type": "みず",
-        "category": "special",
-        "power": 110
-    },
-    {
-        "name": "エナジーボール",
-        "type": "くさ",
-        "category": "special",
-        "power": 90
-    },
-    {
         "name": "ムーンフォース",
         "type": "フェアリー",
         "category": "special",
         "power": 95
     },
     {
+        "name": "インファイト",
+        "type": "かくとう",
+        "category": "physical",
+        "power": 120
+    },
+    {
         "name": "アイアンヘッド",
         "type": "はがね",
         "category": "physical",
         "power": 80
+    },
+    {
+        "name": "ストーンエッジ",
+        "type": "いわ",
+        "category": "physical",
+        "power": 100
+    },
+    {
+        "name": "じゃれつく",
+        "type": "フェアリー",
+        "category": "physical",
+        "power": 90
+    },
+    {
+        "name": "バレットパンチ",
+        "type": "はがね",
+        "category": "physical",
+        "power": 40
+    },
+    {
+        "name": "りゅうせいぐん",
+        "type": "ドラゴン",
+        "category": "special",
+        "power": 130
     }
 ]
