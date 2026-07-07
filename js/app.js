@@ -48,16 +48,10 @@ import {
 
 async function initialize(){
 
-
-    // データ読み込み
-
     await loadPokemonData();
 
     await loadMoveData();
 
-
-
-    // リスト作成
 
     createPokemonList();
 
@@ -65,43 +59,24 @@ async function initialize(){
 
 
 
-    // タイプ選択肢
-
-    createTypeSelect(
-        "attackerType1"
-    );
-
-    createTypeSelect(
-        "attackerType2"
-    );
-
-    createTypeSelect(
-        "defenderType1"
-    );
-
-    createTypeSelect(
-        "defenderType2"
-    );
-
-    createTypeSelect(
+    [
+        "attackerType1",
+        "attackerType2",
+        "defenderType1",
+        "defenderType2",
         "moveType"
-    );
+    ]
+    .forEach(createTypeSelect);
 
 
 
-    // 性格
-
-    createNatureSelect(
-        "attackerNature"
-    );
-
-    createNatureSelect(
+    [
+        "attackerNature",
         "defenderNature"
-    );
+    ]
+    .forEach(createNatureSelect);
 
 
-
-    // 入力イベント
 
     registerPokemonInput(
         "attackerPokemon",
@@ -119,8 +94,6 @@ async function initialize(){
 
 
 
-    // 計算ボタン
-
     document
     .getElementById("calculateButton")
     .addEventListener(
@@ -128,13 +101,12 @@ async function initialize(){
         calculate
     );
 
-
 }
 
 
 
 // ==============================
-// タイプ生成
+// タイプ選択
 // ==============================
 
 function createTypeSelect(id){
@@ -156,6 +128,7 @@ function createTypeSelect(id){
     empty.value="";
     empty.textContent="なし";
 
+
     select.appendChild(empty);
 
 
@@ -167,6 +140,7 @@ function createTypeSelect(id){
 
 
         option.value=type;
+
         option.textContent=type;
 
 
@@ -179,7 +153,7 @@ function createTypeSelect(id){
 
 
 // ==============================
-// 性格生成
+// 性格
 // ==============================
 
 function createNatureSelect(id){
@@ -197,11 +171,13 @@ function createNatureSelect(id){
     getNatureNames()
     .forEach(nature=>{
 
+
         const option =
             document.createElement("option");
 
 
         option.value=nature;
+
         option.textContent=nature;
 
 
@@ -214,7 +190,7 @@ function createNatureSelect(id){
 
 
 // ==============================
-// 実数値更新
+// 実数値計算
 // ==============================
 
 function updateStats(prefix){
@@ -228,49 +204,61 @@ function updateStats(prefix){
         );
 
 
-    if(!pokemon) return;
+    if(!pokemon) return null;
+
+
+
+    const baseStats={
+
+        hp:pokemon.hp,
+
+        atk:pokemon.atk,
+
+        def:pokemon.def,
+
+        spa:pokemon.spa,
+
+        spd:pokemon.spd,
+
+        spe:pokemon.spe
+
+    };
 
 
 
     const points={
 
-        hp:
-        Number(
+        hp:Number(
             document.getElementById(
                 `${prefix}HPPoint`
             ).value
         ),
 
-        atk:
-        Number(
+        atk:Number(
             document.getElementById(
                 `${prefix}AtkPoint`
             ).value
         ),
 
-        def:
-        Number(
+        def:Number(
             document.getElementById(
                 `${prefix}DefPoint`
             ).value
         ),
 
-        spa:
-        Number(
+        spa:Number(
             document.getElementById(
                 `${prefix}SpaPoint`
             ).value
         ),
 
-        spd:
-        Number(
+        spd:Number(
             document.getElementById(
                 `${prefix}SpdPoint`
             ).value
         ),
 
-        spe:
-        Number(
+        spe:Number(
             document.getElementById(
                 `${prefix}SpePoint`
             ).value
@@ -282,7 +270,7 @@ function updateStats(prefix){
 
     const stats =
         calculatePokemonStats(
-            pokemon,
+            baseStats,
             points,
             document.getElementById(
                 `${prefix}Nature`
@@ -297,7 +285,22 @@ function updateStats(prefix){
         statsToText(stats);
 
 
-    return stats;
+
+    return {
+
+        ...stats,
+
+        type1:
+        document.getElementById(
+            `${prefix}Type1`
+        ).value,
+
+        type2:
+        document.getElementById(
+            `${prefix}Type2`
+        ).value
+
+    };
 
 }
 
@@ -318,6 +321,7 @@ function calculate(){
         updateStats("defender");
 
 
+
     const move =
         findMove(
             document.getElementById(
@@ -326,11 +330,8 @@ function calculate(){
         );
 
 
-    if(
-        !attacker ||
-        !defender ||
-        !move
-    ){
+
+    if(!attacker || !defender || !move){
 
         alert("入力が不足しています");
 
@@ -347,26 +348,33 @@ function calculate(){
 
             defender,
 
-            power:move.power,
+            power:
+            move.power,
 
-            category:move.category,
+            category:
+            move.category,
 
-            moveType:move.type,
+            moveType:
+            move.type,
+
 
             stab:
             document.getElementById(
                 "stab"
             ).checked,
 
+
             critical:
             document.getElementById(
                 "critical"
             ).checked,
 
+
             burn:
             document.getElementById(
                 "burn"
             ).checked,
+
 
             weather:
             document.getElementById(
@@ -393,7 +401,6 @@ function calculate(){
         "koChance"
     ).textContent =
         result.koText;
-
 
 }
 
